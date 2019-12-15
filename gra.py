@@ -1,5 +1,6 @@
 import sys
 import pygame
+import random
 
 brazowy = pygame.Color(100, 100, 100)
 bialy = pygame.Color(255, 255, 255)
@@ -20,7 +21,20 @@ def narysuj_weza():
         pygame.draw.rect(plansza, zielony, segment)
 
 
+def wylosuj_polozenie_owocu():
+    rand_x = random.randint(0, 50)
+    rand_y = random.randint(0, 50)
+    return rand_x, rand_y
+
+
+def narysuj_owoc(x, y):
+    owoc = pygame.Rect(x * 10, y * 10, 10, 10)
+    pygame.draw.rect(plansza, brazowy, owoc)
+
+
 narysuj_weza()
+polozenie_owocu_x, polozenie_owocu_y = wylosuj_polozenie_owocu()
+narysuj_owoc(polozenie_owocu_x, polozenie_owocu_y)
 pygame.display.flip()
 
 obecny_kierunek = "lewo"
@@ -55,6 +69,7 @@ while True:
 
     print(polozenie_weza)
     narysuj_weza()
+    narysuj_owoc(polozenie_owocu_x, polozenie_owocu_y)
     pygame.display.flip()
 
 
