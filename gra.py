@@ -22,13 +22,13 @@ def narysuj_weza():
 
 
 def wylosuj_polozenie_owocu():
-    rand_x = random.randint(0, 50)
-    rand_y = random.randint(0, 50)
+    rand_x = random.randint(0, 50) * 10
+    rand_y = random.randint(0, 50) * 10
     return rand_x, rand_y
 
 
 def narysuj_owoc(x, y):
-    owoc = pygame.Rect(x * 10, y * 10, 10, 10)
+    owoc = pygame.Rect(x, y, 10, 10)
     pygame.draw.rect(plansza, brazowy, owoc)
 
 
@@ -56,7 +56,6 @@ while True:
 
     kontroler_predkosci.tick(10)
     glowa_weza = polozenie_weza[0]
-    polozenie_weza.pop()
     if obecny_kierunek == "dol":
         nowa_glowa_weza = [glowa_weza[0], glowa_weza[1] + 10]
     elif obecny_kierunek == "gora":
@@ -66,6 +65,11 @@ while True:
     elif obecny_kierunek == "lewo":
         nowa_glowa_weza = [glowa_weza[0] - 10, glowa_weza[1]]
     polozenie_weza = [nowa_glowa_weza] + polozenie_weza
+
+    if glowa_weza[0] == polozenie_owocu_x and glowa_weza[1] == polozenie_owocu_y:
+        polozenie_owocu_x, polozenie_owocu_y = wylosuj_polozenie_owocu()
+    else:
+        polozenie_weza.pop()
 
     print(polozenie_weza)
     narysuj_weza()
