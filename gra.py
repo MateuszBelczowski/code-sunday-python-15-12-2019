@@ -45,13 +45,13 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
                 sys.exit()
-            if event.key == pygame.K_LEFT:
+            if event.key == pygame.K_LEFT and obecny_kierunek != "prawo":
                 obecny_kierunek = "lewo"
-            elif event.key == pygame.K_RIGHT:
+            elif event.key == pygame.K_RIGHT and obecny_kierunek != "lewo":
                 obecny_kierunek = "prawo"
-            elif event.key == pygame.K_UP:
+            elif event.key == pygame.K_UP and obecny_kierunek != "dol":
                 obecny_kierunek = "gora"
-            elif event.key == pygame.K_DOWN:
+            elif event.key == pygame.K_DOWN and obecny_kierunek != "gora":
                 obecny_kierunek = "dol"
 
     kontroler_predkosci.tick(10)
