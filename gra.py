@@ -8,6 +8,7 @@ init_status = pygame.init()
 plansza = pygame.display.set_mode((500, 500))
 plansza.fill(bialy)
 
+kontroler_predkosci = pygame.time.Clock()
 
 polozenie_weza = [[10, 10], [20, 10], [30, 10], [40, 10], [50, 10]]
 
@@ -39,6 +40,7 @@ while True:
             elif event.key == pygame.K_DOWN:
                 obecny_kierunek = "dol"
 
+    kontroler_predkosci.tick(10)
     glowa_weza = polozenie_weza[0]
     polozenie_weza.pop()
     if obecny_kierunek == "dol":
